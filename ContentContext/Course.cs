@@ -8,6 +8,7 @@
         }
         public string Tag { get; set; }
         public IList<Module> Modules { get; set; }
+        public ExecutionContext Level { get; set; }
 
     }    
 }
