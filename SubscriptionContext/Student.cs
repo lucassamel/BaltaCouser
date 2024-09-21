@@ -1,4 +1,5 @@
-﻿using BaltaCourse.SharedContext;
+﻿using BaltaCourse.NotificationContext;
+using BaltaCourse.SharedContext;
 using BaltaCourse.SubscriptionContext;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,17 @@ namespace BaltaCourse.SubscriptionContent
         public string Email { get; set; }
         public User User { get; set; }
         public IList<Subscription> Subscriptions { get; set; }
+
+        public void CreateSubscription(Subscription subscription)
+        {
+            if(IsPremium)
+            {
+                AddNotification(new Notification("Premium", "O Aluno já possui uma assinatura ativa"));
+                return;
+            }
+
+            Subscriptions.Add(subscription);
+        }
 
         public bool IsPremium => Subscriptions.Any(x => !x.IsActive);
     }
