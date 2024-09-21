@@ -9,12 +9,18 @@ namespace BaltaCourse.NotificationContext
     public abstract class Notifiable
     {
         public List<Notification> Notifications { get; set; }
+        public bool IsInvalid => Notifications.Any();
 
-        public void Add(Notification notification)
+        protected Notifiable()
+        {
+            Notifications = [];
+        }
+
+        public void AddNotification(Notification notification)
         {
             Notifications.Add(notification);
         }
-        public void AddRange(IEnumerable<Notification> notifications)
+        public void AddRangeNotifications(IEnumerable<Notification> notifications)
         {
             Notifications.AddRange(notifications);
         }

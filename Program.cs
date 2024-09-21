@@ -22,7 +22,7 @@ namespace BaltaCourse
             var courseAspNet = new Course("Fundamentos AspNet", "funcdamentos-aspnet");
             courses.Add(courseDotNet);
             courses.Add(courseCsharp);
-            courses.Add(courseAspNet);
+            courses.Add(courseAspNet);           
 
             var careers = new List<Career>();
             var careerDotNet = new Career("Especialista .Net", "especialista-dotnet");
@@ -38,8 +38,13 @@ namespace BaltaCourse
                 foreach (var item in career.Items.OrderBy(x => x.Order))
                 {
                     Console.WriteLine($"{item.Order} - {item.Title}");
-                    Console.WriteLine(item.Course.Title);
-                    Console.WriteLine(item.Course.Level);
+                    Console.WriteLine(item.Course?.Title);
+                    Console.WriteLine(item.Course?.Level);
+
+                    foreach (var notification in item.Notifications)
+                    {
+                        Console.WriteLine($"{notification.Property} - {notification.Message}");
+                    }
                 }
             }
         }

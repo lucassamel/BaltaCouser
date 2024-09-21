@@ -1,13 +1,13 @@
-﻿namespace BaltaCourse.ContentContext
+﻿using BaltaCourse.NotificationContext;
+
+namespace BaltaCourse.ContentContext
 {
     public class CareerItem : Base
     {
         public CareerItem(int order, string title, string description, Course course)
         {
             if (course == null)
-            {
-                throw new SystemException("O Curso não pode ser nulo!");
-            }
+                AddNotification(new Notification("Course", "Curso Inválido"));
             Order = order;
             Title = title;
             Description = description;
