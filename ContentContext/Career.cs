@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Payments.ContentContext
+﻿namespace BaltaCourse.ContentContext
 {
     public class Career : Content
     {
-        public int Courses { get; set; }
+        public Career()
+        {
+            Items = [];
+        }
+        public IList<CareerItem> Items { get; set; }
+        public int TotalCourses => Items.Count;                              
     }
 }
